@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--  *****   Link To Custom CSS Style Sheet   *****  -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!--  *****   Link To Font Awesome Icons   *****  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+
+    <!--  *****   Link To Owl Carousel   *****  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <title>Med NearBy</title>
+</head>
+<body>
+<!--   *** Website Container Starts ***   -->
+<div class="website-container">
+    
+<!--   *** Home Section Starts ***   -->
+<section class="home" id="home">
+    <!--   === Main Navbar Starts ===   -->
+    <nav class="main-navbar">
+        <a href="#" class="logo">
+            <img src="images/home/med-nearby-logo.png">
+        </a>
+        <div class="logo-text">Med NearBy</div>
+        <ul class="nav-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#locator">Locator</a></li>
+            <li><a href="#categories">About</a></li>
+            <li><a href="#footer">Contact</a></li>
+        </ul>
+
+<!-- *** Sign-In Button Section Starts *** -->
+        <a href="#" class="sign-in-btn-container" onclick="openPopup()">
+            <button class="sign-in-btn btn">Sign In</button>
+        </a>
+    
+        <div class="popup-overlay" id="popupOverlay" style="display: none;">
+            <div class="popup">
+                <div class="popup-header">
+                    <button id="adminTab" class="active" onclick="switchTab('admin')">Admin Panel</button>
+                    <button id="userTab" onclick="switchTab('user')">User Panel</button>
+                </div>
+    
+                <div id="adminPanel" class="form-section active">
+                    <div class="form-group">
+                        <label for="adminName">Name</label>
+                        <input type="text" id="adminName" oninput="checkForm('admin')">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminEmail">Email</label>
+                        <input type="email" id="adminEmail" oninput="checkForm('admin')">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminPassword">Password</label>
+                        <input type="password" id="adminPassword" oninput="checkForm('admin')">
+                    </div>
+                    <div class="form-group">
+                        <label for="shopName">Shop Name</label>
+                        <input type="text" id="shopName" oninput="checkForm('admin')">
+                    </div>
+                    <div class="form-group">
+                        <label for="licenseNumber">License Number</label>
+                        <input type="text" id="licenseNumber" oninput="checkForm('admin')">
+                    </div>
+                    <div class="form-group">
+                        <label for="adminContact">Contact No</label>
+                        <input type="text" id="adminContact" oninput="checkForm('admin')">
+                    </div>
+                    <div class="form-buttons">
+                        <button id="adminSubmit" disabled onclick="submitForm('admin')">Submit</button>
+                        <button onclick="closePopup()">Close</button>
+                    </div>
+                </div>
+    
+                <div id="userPanel" class="form-section">
+                    <div class="form-group">
+                        <label for="userName">Name</label>
+                        <input type="text" id="userName" oninput="checkForm('user')">
+                    </div>
+                    <div class="form-group">
+                        <label for="userGender">Gender</label>
+                        <input type="text" id="userGender" oninput="checkForm('user')">
+                    </div>
+                    <div class="form-group">
+                        <label for="userAge">Age</label>
+                        <input type="number" id="userAge" oninput="checkForm('user')">
+                    </div>
+                    <div class="form-group">
+                        <label for="userContact">Contact No</label>
+                        <input type="text" id="userContact" oninput="checkForm('user')">
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail">Email</label>
+                        <input type="email" id="userEmail" oninput="checkForm('user')">
+                    </div>
+                    <div class="form-group">
+                        <label for="userPassword">Password</label>
+                        <input type="password" id="userPassword" oninput="checkForm('user')">
+                    </div>
+                    <div class="form-buttons">
+                        <button id="userSubmit" disabled onclick="submitForm('user')">Submit</button>
+                        <button onclick="closePopup()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+<!-- *** Sign-In Button Section Ends *** -->
+
+        <div class="menu-btn">
+            <span></span>
+        </div>
+    </nav>
+    <!--   === Main Navbar Ends ===   -->
+    <!--   === Banner Starts ===   -->
+    <div class="banner">
+        
+        <div class="banner-desc">
+            <h2>Welcome to our Med NearBy</h2>
+            <p>Find your medication or locate the closest pharmacy to your current location or any desired address.
+                Fast, easy, and reliable with just few clicks.</p>
+
+<!-- *** Search-bar Section Ends *** -->
+            <!-- Updated Search Bar -->
+            <form id="search-form">
+                <div class="search-container">
+                    <input type="text" id="search-bar" placeholder="Search for a medicine..." autocomplete="off">
+                    <button type="submit" id="search-btn">Search</button>
+                </div>
+            </form>
+            
+            <!-- Result Pop-up -->
+            <div id="result-panel" class="result-panel">
+                <button id="close-result-btn" class="close-btn">×</button>
+                <h3>Medicine Details</h3>
+                <div id="medicine-details"></div>
+            </div>
+            
+            <!-- Medicine List (Suggestions) -->
+            <div id="medicine-list" class="medicine-list">
+                <ul id="medicine-suggestions"></ul>
+            </div>
+            
+            
+        </div>
+
+<!-- *** Search-bar Section Ends *** -->
+
+
+        <div class="banner-img">
+            <div class="banner-img-container">
+                <img src="images/home/front-page-logo.jpg" />
+
+                <div class="pattern">
+                    <img src="images/home/pattern.png" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--   === Banner Ends ===   -->
+</section>
+<!--   *** Home Section Ends ***   -->
+
+
+<!--   *** Services Section Starts ***   -->
+<section class="services" id="services">
+    <!--   *** Services Header Starts ***   -->
+    <header class="section-header">
+        <h1>Why Choose Us</h1>
+        <p>We offer a range of Pharmacy services to meet your medication needs by accessing real-time pharmacy information.</p>
+    </header>
+    <!--   *** Services Header Ends ***   -->
+    <!--   *** Services Contents Starts ***   -->
+    <div class="services-contents">
+
+        <div class="service-box">
+            <div class="service-icon">
+                <i class="fa-solid fa-magnifying-glass-location"></i>
+            </div>
+            <div class="service-desc">
+                <h2>Real-Time Pharmacy Search</h2>
+                <p>We allow users to input their prescription or search by address to find their nearby pharmacies.</p>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <div class="service-icon">
+                <i class="fa-solid fa-prescription-bottle-medical"></i>
+            </div>
+            <div class="service-desc">
+                <h2>Detailed Pharmacy Information</h2>
+                <p>We provide comprehensive information about each pharmacy, including:
+                    Address, Phone Number, Services offered.
+                </p>
+            </div>
+        </div>
+
+        <div class="service-box">
+            <div class="service-icon">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+            <div class="service-desc">
+                <h2>24/7 Support</h2>
+                <p>Offering 24/7 support from Med NearBy to enhance the user experience and build trust.</p>
+            </div>
+        </div>
+
+    </div>
+    <!--   *** Services Contents Ends ***   -->
+</section>
+<!--   *** Services Section Ends ***   -->
+
+
+<!-- *** Locator Section Starts ***   -->
+<section class="locator" id="locator">
+    <!--   *** Locator Header Starts ***   -->
+    <header class="section-header">
+        <div class="header-text">
+            <h1>Pharmacy Store Locator</h1>
+            <p>Find your nearest pharmacy with our convenient pharmacy store locator.</p>
+        </div>
+    </header>
+    <!--   *** Locator Header Ends ***   -->
+
+    <!--   *** Locator Contents Starts ***   -->
+
+    <div class="owl-carousel owl-theme testimonials-slider">
+
+        <div class="item testimonials-item">
+            <div class="profile">
+                <div class="contact-left">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120073.078555521!2d75.22279889250606!3d19.87023876019034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdb9815a369bc63%3A0x712d538b29a2a73e!2sChhatrapati%20Sambhajinagar%20(Aurangabad)%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1725381179057!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- *** Locator Contents Ends ***   -->
+</section>
+<!--   *** Locator Section Ends ***   -->
+
+<!--   *** About Us Section Starts ***   -->
+<section class="categories" id="categories">
+    <!--   === Categories Section Header Starts ===   -->
+    <header class="section-header">
+        <h1>About Us</h1>
+        <p>
+            Med Nearby is a cutting-edge, real-time medicine availability tracker designed to make healthcare more accessible and efficient. Our platform empowers users to quickly search for medicines by name and instantly locate their availability in nearby pharmacies. Whether you're looking for a specific drug or checking its stock at local stores, Med Nearby connects you with the information you need at your fingertips. With our seamless integration of real-time data, users can also check the distances to pharmacies and make informed decisions. Med Nearby is dedicated to improving access to essential medicines and enhancing the healthcare experience for all.
+        </p>
+    </header>
+    <!--   === Categories Section Header Ends ===   -->
+   
+</section>
+<!--   *** About Us Section Ends ***   -->
+
+<!--   *** Footer Section Starts ***   -->
+<section class="footer" id="footer">
+    
+    <!--   === Footer Contents Starts ===   -->
+    <div class="footer-contents">
+        
+        <div class="footer-col footer-col-1">
+            <div class="col-title">
+                <img src="images/home/med-nearby-logo.png" />
+                <h2>Med NearBy</h2>  
+            </div>
+            <div class="col-contents">
+                <p style="text-align: justify;">We strive to make healthcare accessible by connecting you to pharmacies nearby.</p>
+            </div>
+        </div>
+
+        <div class="footer-col footer-col-2">
+            <div class="col-title">
+                <h3>Contact</h3>
+            </div>
+            <div class="col-contents">
+                <div class="contact-row">
+                    <span>Address</span>
+                    <span>431005, Chhatrapati Sambhajinagar, Maharashtra</span>
+                </div>
+                <div class="contact-row">
+                    <span>Phone</span>
+                    <span>+91 9900887766</span>
+                </div>
+                <div class="contact-row">
+                    <span>Website</span>
+                    <span>med-nearby.com</span>
+                </div>
+                <div class="contact-row">
+                    <span>Email</span>
+                    <span>username@gmail.com</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-col footer-col-3">
+            <div class="col-title">
+                <h3>Quick Links</h3>
+            </div>
+            <div class="col-contents">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#locator">Locator</a>
+                <a href="#categories">About</a>
+                <a href="#footer">Contact</a>
+            </div>
+        </div>
+
+        <div class="footer-col footer-col-4">
+            <div class="col-title">
+                <h3>Newsletter</h3>
+            </div>
+            <div class="col-contents">
+                <form class="newsletter">
+                    <input type="email" placeholder="Your Email">
+                    <button class="newsletter-btn btn" type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--   === Footer Contents Ends ===   -->
+    <div class="copy-rights">
+        <p>Created By <b>Med NearBy</b></p>
+    </div>
+
+</section>
+<!--   *** Footer Section Ends ***   -->
+
+</div>
+<!--   *** Website Container Ends ***   -->
+
+<!--   *** Link To JQuery ***   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+<!--   *** Link To Owl Carousel ***   -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<!--   *** Include the medicine search functionality script ***   -->
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
